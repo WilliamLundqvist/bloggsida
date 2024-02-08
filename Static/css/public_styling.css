@@ -8,11 +8,13 @@ body {
   padding-bottom: 6rem;
   min-height: 100%;
   background: #EEEEEE;
+}
 /* HEADINGS DEFAULT */
 h1, h2, h3, h4, h5, h6 { color: #444; font-family: 'Averia Serif Libre', cursive; }
 a { text-decoration: none; }
 ul, ol { margin-left: 40px; }
 hr { margin: 10px 0px; opacity: .25; }
+
 
 /* FORM DEFAULTS */
 form h2 {
@@ -138,7 +140,7 @@ form input:focus {
      
 }
 
-}.banner .welcome_msg {
+.banner .welcome_msg {
         width: 45%;
         float: left;
         padding: 20px;

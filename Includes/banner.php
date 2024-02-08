@@ -8,7 +8,7 @@
 
 <div class="banner top">
         <div class="welcome_msg">
-                <h1>Welcome to willys personal blog!!</h1>
+                <h1>Welcome to williams personal blog!!</h1>
                 <p> 
                    
                 </p>
