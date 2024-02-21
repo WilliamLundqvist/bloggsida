@@ -1,5 +1,5 @@
-<?php  include('../../config.php'); ?>
-<?php  include('../admin_functions.php'); ?>
+<?php  include('../config.php'); ?>
+<?php  include('admin_functions.php'); ?>
 <?php 
         // Get all admin users from DB
         $admins = getAdminUsers();

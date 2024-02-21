@@ -1,6 +1,6 @@
 <?php include('../config.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/admin_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
+<?php include('admin_functions.php'); ?>
+<?php include( 'includes/head_section.php'); ?>
 <title>Admin | Dashboard</title>
 </head>
 
@@ -16,7 +16,7 @@
                                 <span>
                                         <?php echo $_SESSION['user']['username'] ?>
                                 </span> &nbsp; &nbsp;
-                                <a href="<?php echo BASE_URL . '/logout.php'; ?>" class="logout-btn">logout</a>
+                                <a href="<?php echo BASE_URL . 'logout.php'; ?>" class="logout-btn">logout</a>
                         </div>
                 <?php endif ?>
         </div>

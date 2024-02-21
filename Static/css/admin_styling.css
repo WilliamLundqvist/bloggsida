@@ -88,7 +88,7 @@ th { text-align: center;}
 /* * * * * * * * * *
 * PAGE CONTENT
 * * * * * * * * * */
-.container.content .menu { width: 16%; float: left; padding: 40px 10px; }
+.container.content .menu { width: 100%; float: left; padding: 40px 10px; }
 /* Menu card */
 .container.content .menu .card .card-header {
         padding: 10px;
