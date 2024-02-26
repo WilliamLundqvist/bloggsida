@@ -1,5 +1,6 @@
-<?php 
-function getPublishedPosts() {
+<?php
+function getPublishedPosts()
+{
         global $conn;
         $sql = "SELECT * FROM posts WHERE published=true";
         $result = mysqli_query($conn, $sql);
@@ -8,16 +9,17 @@ function getPublishedPosts() {
 
         $final_posts = array();
         foreach ($posts as $post) {
-                $post['topic'] = getPostTopic($post['id']); 
+                $post['topic'] = getPostTopic($post['id']);
                 array_push($final_posts, $post);
         }
         return $final_posts;
 }
 /* * * * * * * * * * * * * * *
-* Receives a post id and
-* Returns topic of the post
-* * * * * * * * * * * * * * */
-function getPostTopic($post_id){
+ * Receives a post id and
+ * Returns topic of the post
+ * * * * * * * * * * * * * * */
+function getPostTopic($post_id)
+{
         global $conn;
         $sql = "SELECT * FROM topics WHERE id=
                         (SELECT topic_id FROM post_topic WHERE post_id=$post_id) LIMIT 1";
@@ -26,8 +28,9 @@ function getPostTopic($post_id){
         return $topic;
 }
 
- 
-function getPublishedPostsByTopic($topic_id) {
+
+function getPublishedPostsByTopic($topic_id)
+{
         global $conn;
         $sql = "SELECT * FROM posts ps 
                         WHERE ps.id IN 
@@ -40,14 +43,14 @@ function getPublishedPostsByTopic($topic_id) {
 
         $final_posts = array();
         foreach ($posts as $post) {
-                $post['topic'] = getPostTopic($post['id']); 
+                $post['topic'] = getPostTopic($post['id']);
                 array_push($final_posts, $post);
         }
         return $final_posts;
 }
 /* * * * * * * * * * * * * * * *
-* Returns topic name by topic id
-* * * * * * * * * * * * * * * * */
+ * Returns topic name by topic id
+ * * * * * * * * * * * * * * * * */
 function getTopicNameById($id)
 {
         global $conn;
@@ -58,7 +61,8 @@ function getTopicNameById($id)
 }
 
 
-function getPost($slug){
+function getPost($slug)
+{
         global $conn;
         // Get single post slug
         $post_slug = $_GET['post-slug'];
@@ -74,8 +78,8 @@ function getPost($slug){
         return $post;
 }
 /* * * * * * * * * * * *
-*  Returns all topics
-* * * * * * * * * * * * */
+ *  Returns all topics
+ * * * * * * * * * * * * */
 function getAllTopics()
 {
         global $conn;

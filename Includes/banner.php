@@ -22,7 +22,10 @@
                         <h2>Login</h2>
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password"  placeholder="Password"> 
+                        <div class="bottom_login">
                         <button class="btn" type="submit" name="login_btn">Sign in</button>
+                        <?php include(ROOT_PATH . '/includes/errors.php') ?>
+                        </div>
                 </form>
         </div>
 </div>

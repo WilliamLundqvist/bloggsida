@@ -268,12 +268,9 @@ form input:focus {
 .content .post .post_image {
         height: 260px;
         width: 100%;
-        background-size: 100%;
+        object-fit: cover;
 }
-.content .post .post_image {
-        width: 100%;
-        height: 260px;
-}
+
 .content .post .post_info {
         height: 100%;
         padding: 0px 5px;

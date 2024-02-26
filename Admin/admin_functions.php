@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Admin user variables
 $admin_id = 0;
 $isEditingUser = false;
@@ -33,9 +33,10 @@ if (isset($_GET['delete-admin'])) {
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-* - Returns all admin users and their corresponding roles
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-function getAdminUsers(){
+ * - Returns all admin users and their corresponding roles
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+function getAdminUsers()
+{
         global $conn, $roles;
         $sql = "SELECT * FROM users WHERE role IS NOT NULL";
         $result = mysqli_query($conn, $sql);
@@ -44,19 +45,21 @@ function getAdminUsers(){
         return $users;
 }
 /* * * * * * * * * * * * * * * * * * * * *
-* - Escapes form submitted value, hence, preventing SQL injection
-* * * * * * * * * * * * * * * * * * * * * */
-function esc(String $value){
+ * - Escapes form submitted value, hence, preventing SQL injection
+ * * * * * * * * * * * * * * * * * * * * * */
+function esc(string $value)
+{
         // bring the global db connect object into function
         global $conn;
         // remove empty space sorrounding string
-        $val = trim($value); 
+        $val = trim($value);
         $val = mysqli_real_escape_string($conn, $value);
         return $val;
 }
 // Receives a string like 'Some Sample String'
 // and returns 'some-sample-string'
-function makeSlug(String $string){
+function makeSlug(string $string)
+{
         $string = strtolower($string);
         $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
         return $slug;
@@ -64,26 +67,37 @@ function makeSlug(String $string){
 
 
 /* * * * * * * * * * * * * * * * * * * * * * *
-* - Receives new admin data from form
-* - Create new admin user
-* - Returns all admin users with their roles 
-* * * * * * * * * * * * * * * * * * * * * * */
-function createAdmin($request_values){
+ * - Receives new admin data from form
+ * - Create new admin user
+ * - Returns all admin users with their roles 
+ * * * * * * * * * * * * * * * * * * * * * * */
+function createAdmin($request_values)
+{
         global $conn, $errors, $role, $username, $email;
         $username = esc($request_values['username']);
         $email = esc($request_values['email']);
         $password = esc($request_values['password']);
         $passwordConfirmation = esc($request_values['passwordConfirmation']);
 
-        if(isset($request_values['role'])){
+        if (isset($request_values['role'])) {
                 $role = esc($request_values['role']);
         }
         // form validation: ensure that the form is correctly filled
-        if (empty($username)) { array_push($errors, "Uhmm...We gonna need the username"); }
-        if (empty($email)) { array_push($errors, "Oops.. Email is missing"); }
-        if (empty($role)) { array_push($errors, "Role is required for admin users");}
-        if (empty($password)) { array_push($errors, "uh-oh you forgot the password"); }
-        if ($password != $passwordConfirmation) { array_push($errors, "The two passwords do not match"); }
+        if (empty($username)) {
+                array_push($errors, "Uhmm...We gonna need the username");
+        }
+        if (empty($email)) {
+                array_push($errors, "Oops.. Email is missing");
+        }
+        if (empty($role)) {
+                array_push($errors, "Role is required for admin users");
+        }
+        if (empty($password)) {
+                array_push($errors, "uh-oh you forgot the password");
+        }
+        if ($password != $passwordConfirmation) {
+                array_push($errors, "The two passwords do not match");
+        }
         // Ensure that no user is registered twice. 
         // the email and usernames should be unique
         $user_check_query = "SELECT * FROM users WHERE username='$username' 
@@ -92,11 +106,11 @@ function createAdmin($request_values){
         $user = mysqli_fetch_assoc($result);
         if ($user) { // if user exists
                 if ($user['username'] === $username) {
-                  array_push($errors, "Username already exists");
+                        array_push($errors, "Username already exists");
                 }
 
                 if ($user['email'] === $email) {
-                  array_push($errors, "Email already exists");
+                        array_push($errors, "Email already exists");
                 }
         }
         // register user if there are no errors in the form
@@ -112,10 +126,10 @@ function createAdmin($request_values){
         }
 }
 /* * * * * * * * * * * * * * * * * * * * *
-* - Takes admin id as parameter
-* - Fetches the admin from database
-* - sets admin fields on form for editing
-* * * * * * * * * * * * * * * * * * * * * */
+ * - Takes admin id as parameter
+ * - Fetches the admin from database
+ * - sets admin fields on form for editing
+ * * * * * * * * * * * * * * * * * * * * * */
 function editAdmin($admin_id)
 {
         global $conn, $username, $role, $isEditingUser, $admin_id, $email;
@@ -130,9 +144,10 @@ function editAdmin($admin_id)
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-* - Receives admin request from form and updates in database
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-function updateAdmin($request_values){
+ * - Receives admin request from form and updates in database
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+function updateAdmin($request_values)
+{
         global $conn, $errors, $role, $username, $isEditingUser, $admin_id, $email;
         // get id of the admin to be updated
         $admin_id = $request_values['admin_id'];
@@ -144,7 +159,7 @@ function updateAdmin($request_values){
         $email = esc($request_values['email']);
         $password = esc($request_values['password']);
         $passwordConfirmation = esc($request_values['passwordConfirmation']);
-        if(isset($request_values['role'])){
+        if (isset($request_values['role'])) {
                 $role = $request_values['role'];
         }
         // register user if there are no errors in the form
@@ -161,7 +176,8 @@ function updateAdmin($request_values){
         }
 }
 // delete admin user 
-function deleteAdmin($admin_id) {
+function deleteAdmin($admin_id)
+{
         global $conn;
         $sql = "DELETE FROM users WHERE id=$admin_id";
         if (mysqli_query($conn, $sql)) {
@@ -178,7 +194,9 @@ $topic_name = "";
 
 
 // if user clicks the create topic button
-if (isset($_POST['create_topic'])) { createTopic($_POST); }
+if (isset($_POST['create_topic'])) {
+        createTopic($_POST);
+}
 // if user clicks the Edit topic button
 if (isset($_GET['edit-topic'])) {
         $isEditingTopic = true;
@@ -196,21 +214,23 @@ if (isset($_GET['delete-topic'])) {
 }
 
 // get all topics from DB
-function getAllTopics() {
+function getAllTopics()
+{
         global $conn;
         $sql = "SELECT * FROM topics";
         $result = mysqli_query($conn, $sql);
         $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $topics;
 }
-function createTopic($request_values){
+function createTopic($request_values)
+{
         global $conn, $errors, $topic_name;
         $topic_name = esc($request_values['topic_name']);
         // create slug: if topic is "Life Advice", return "life-advice" as slug
         $topic_slug = makeSlug($topic_name);
         // validate form
-        if (empty($topic_name)) { 
-                array_push($errors, "Topic name required"); 
+        if (empty($topic_name)) {
+                array_push($errors, "Topic name required");
         }
         // Ensure that no topic is saved twice. 
         $topic_check_query = "SELECT * FROM topics WHERE slug='$topic_slug' LIMIT 1";
@@ -230,7 +250,8 @@ function createTopic($request_values){
         }
 }
 
-function editTopic($topic_id) {
+function editTopic($topic_id)
+{
         global $conn, $topic_name, $isEditingTopic, $topic_id;
         $sql = "SELECT * FROM topics WHERE id=$topic_id LIMIT 1";
         $result = mysqli_query($conn, $sql);
@@ -238,15 +259,16 @@ function editTopic($topic_id) {
         // set form values ($topic_name) on the form to be updated
         $topic_name = $topic['name'];
 }
-function updateTopic($request_values) {
+function updateTopic($request_values)
+{
         global $conn, $errors, $topic_name, $topic_id;
         $topic_name = esc($request_values['topic_name']);
         $topic_id = esc($request_values['topic_id']);
         // create slug: if topic is "Life Advice", return "life-advice" as slug
         $topic_slug = makeSlug($topic_name);
         // validate form
-        if (empty($topic_name)) { 
-                array_push($errors, "Topic name required"); 
+        if (empty($topic_name)) {
+                array_push($errors, "Topic name required");
         }
         // register topic if there are no errors in the form
         if (count($errors) == 0) {
@@ -259,7 +281,8 @@ function updateTopic($request_values) {
         }
 }
 // delete topic 
-function deleteTopic($topic_id) {
+function deleteTopic($topic_id)
+{
         global $conn;
         $sql = "DELETE FROM topics WHERE id=$topic_id";
         if (mysqli_query($conn, $sql)) {
