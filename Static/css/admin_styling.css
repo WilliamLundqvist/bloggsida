@@ -1,7 +1,7 @@
 /* * * * * * * * * *
 * STYLING DEFAULTS
 * * * * * * * * * */
-* { margin: 0px; padding: 0px; }
+* { margin: 0px; padding: 0px;  user-select: none; }
 a { text-decoration: none; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Noto Serif', serif; }
 /* forms */
@@ -63,16 +63,18 @@ th { text-align: center;}
 }
 .container:after { content: ""; display: block; clear: both; }
 .container.dashboard h1 { text-align: center; margin: 25px; }
+.container.dashboard .stats{
+        display: flex;
+        justify-content: center;
+        gap: 10%;
+}
 .container.dashboard .stats a {
-        display: inline-block;
         padding: 30px;
-        margin: 5px;
-        width: 25%;
+        width: 15%;
         text-align: center;
         border-radius: 3px;
         border: 1px solid #BFBCB3;
 }
-.container.dashboard .stats a.first { margin-left: 25px; }
 .container.dashboard .stats a:hover { cursor: pointer; background-color: #E1E1E1; }
 .container.dashboard .buttons { margin-left: 15px; }
 .container.dashboard .buttons a {

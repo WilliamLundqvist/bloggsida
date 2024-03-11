@@ -1,6 +1,6 @@
 <?php include('../config.php'); ?>
 <?php include('admin_functions.php'); ?>
-<?php include( 'includes/head_section.php'); ?>
+<?php include('includes/head_section.php'); ?>
 <title>Admin | Dashboard</title>
 </head>
 
@@ -24,17 +24,31 @@
                 <h1>Welcome</h1>
                 <div class="stats">
                         <a href="users.php" class="first">
-                                <span>43</span> <br>
-                                <span>Newly registered users</span>
+                                <?php
+                                $sql = "SELECT COUNT(*) as total_rows FROM users";
+                                $result = $conn->query($sql);
+                                $row = $result->fetch_assoc();
+                                echo $row["total_rows"];
+
+                                ?>
+
+                                <br>
+                                <span>Registered users</span>
                         </a>
                         <a href="posts.php">
-                                <span>43</span> <br>
+                                <span>
+                                        <?php
+                                        $sql = "SELECT COUNT(*) as total_rows FROM posts";
+                                        $result = $conn->query($sql);
+                                        $row = $result->fetch_assoc();
+                                        echo $row["total_rows"];
+
+
+                                        ?>
+                                </span> <br>
                                 <span>Published posts</span>
                         </a>
-                        <a>
-                                <span>43</span> <br>
-                                <span>Published comments</span>
-                        </a>
+                
                 </div>
                 <br><br><br>
                 <div class="buttons">
