@@ -7,5 +7,5 @@
         <!-- Styling for public area -->
         <link rel="stylesheet" href="static/css/public_styling.css">
         <link rel="stylesheet" href="static/css/index_styling.css">
-        
+        <script defer src="Static\public_script.js"></script>
         <meta charset="UTF-8">
