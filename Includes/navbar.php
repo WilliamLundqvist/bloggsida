@@ -1,4 +1,5 @@
-<div class="navbar">
+<script defer src="Static\public_script.js"></script>
+<div class="navbar" id="navbar">
                         <div class="logo_div">
                                 <a href="index.php">
                                         <h1>LifeBlog</h1>

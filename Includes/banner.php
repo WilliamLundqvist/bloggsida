@@ -7,11 +7,11 @@
                 <span><a href="logout.php">logout</a></span>
         </div>
         <script>
-
-                function removeImg(img) {
+                function removeImg() {
                         img.classList.add("active");
+                        navbar.classList.add("active");
                 }
-                removeImg(img);
+                removeImg();
                 </script>
 <?php } else { ?>
 
