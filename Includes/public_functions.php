@@ -84,4 +84,14 @@ function getAllTopics()
         $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $topics;
 }
+
+function addView($postId){
+        global $conn;
+        $sql = "UPDATE posts SET views=views+1 WHERE id=$postId";
+
+        if ($conn->query($sql) === TRUE) {
+                
+              } else {
+                }
+}
 ?>

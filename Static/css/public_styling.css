@@ -292,6 +292,26 @@ form input:focus {
   transition: 0.4s;
   opacity: 1;
 }
+.content .post .views {
+  margin-top: 0px;
+  padding: 3px 8px;
+  color: #ffffff9d;
+  font-style: italic;
+  background: none;
+  display: inline-block;
+  position: absolute;
+  right: 3px;
+  bottom: 50px;
+  z-index: 3;
+}
+
+.content .post .view:hover {
+  box-shadow: 3px 2px 2px;
+  color: white;
+  background: #374447;
+  transition: 0.4s;
+  opacity: 1;
+}
 .content .post .post_image {
   height: 260px;
   width: 100%;

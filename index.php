@@ -35,6 +35,12 @@
                                                                 class="btn category">
                                                                 <?php echo $post['topic']['name'] ?>
                                                         </a>
+
+                                                <?php endif ?>
+                                                <?php  if (isset($post['views'])): ?>
+                                                        <a class="btn views">
+                                                         <?php echo "Views: " . $post['views'] ?>
+                                                        </a>
                                                 <?php endif ?>
                                                 <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
                                                         <div class="post_info">

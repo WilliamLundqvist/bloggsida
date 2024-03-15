@@ -4,7 +4,11 @@
 if (isset($_GET['post-slug'])) {
         $post = getPost($_GET['post-slug']);
 }
+
+addView($post['id']);
 $topics = getAllTopics();
+
+
 ?>
 <?php include('includes/head_section.php'); ?>
 <title>
