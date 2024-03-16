@@ -1,7 +1,7 @@
 <?php 
         session_start();
 
-        // connect to database
+        // connect to databasen
         $conn = mysqli_connect("localhost", "root", "", "bloggsida");
        
         if ($conn->connect_error) {
