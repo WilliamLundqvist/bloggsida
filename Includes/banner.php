@@ -15,7 +15,7 @@
                 </script>
 <?php } else { ?>
 
-        <div class="banner top">
+        <div class="banner">
                 <div class="welcome_msg">
                         <h1>Welcome to williams personal blog!!</h1>
                         <p>
@@ -23,9 +23,7 @@
                         </p>
                         <a href="register.php" class="btn">Join us!</a>
                 </div>
-        </div>
-
-        <div class="banner bottom">
+               <div class="login_div_parent">
                 <div class="login_div">
                         <form action="index.php" method="post">
                                 <h2>Login</h2>
@@ -37,7 +35,7 @@
                                 </div>
                         </form>
                 </div>
-        </div>
+                </div>
         </div>
 
 <?php } ?>

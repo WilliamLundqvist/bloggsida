@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0px;
   padding: 0px;
@@ -14,7 +16,7 @@ body {
   min-height: 100%;
   background: #eeeeee;
 }
-/* HEADINGS DEFAULT */
+
 h1,
 h2,
 h3,
@@ -36,7 +38,7 @@ hr {
   opacity: 0.25;
 }
 
-/* FORM DEFAULTS */
+
 form h2 {
   margin: 25px auto;
   text-align: center;
@@ -56,7 +58,7 @@ form input {
 form input:focus {
   outline: none;
 }
-/* BUTTON DEFAULT */
+
 .btn {
   color: white;
   background: rgba(7, 7, 67, 0.4);
@@ -83,7 +85,6 @@ form input:focus {
   width: 100%;
   margin: 0px auto;
 }
-/* NAVBAR */
 .navbar {
   width: 80%;
   margin: 0 auto;
@@ -114,7 +115,6 @@ form input:focus {
   background-color: #334f5c;
 }
 
-/* LOGO */
 .navbar .logo_div {
   float: left;
   padding-top: 5px;
@@ -128,7 +128,6 @@ form input:focus {
   font-family: "Tangerine", cursive;
 }
 
-/* FOOTER */
 .footer {
   position: absolute;
   right: 0;
@@ -141,37 +140,36 @@ form input:focus {
   margin: 20px auto 0px;
   padding: 20px 0px;
 }
-/* BANNER: Welcome message; */
-.banner {
-  width: 80%;
-  margin: 5px auto;
+
+.banner{
   margin-top: 15px;
-  min-height: 250px;
-  color: white;
-  border-radius: 5px;
-}
-.top {
-  margin: 10px auto;
-}
-.bottom {
-  margin-right: auto;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction:column;
+  width: 80%;
   margin-left: auto;
-  padding-bottom: 10px;
-  height: 270px;
-  margin-bottom: 30px;
+  margin-right: auto;
+  height: 600px;
+  gap: 15px;
 }
 
+
 .banner .welcome_msg {
-  width: 45%;
+  min-width: 480px;
+  min-height: 260px;
+  height: 50%;
+  width: 50%;
   float: left;
-  padding: 20px;
   background: rgba(100, 100, 100, 0.7);
   border-radius: 6px;
   box-shadow: 0px 11px 37px 6px rgba(0, 0, 0, 0.63);
 }
+
+
 .banner .welcome_msg h1 {
   color: #ffffff;
-  margin: 25px 0px;
+  margin: 25px;
+  text-align: center;
   font-size: 2.4em;
   font-family: "Averia Serif Libre", cursive;
 }
@@ -187,18 +185,25 @@ form input:focus {
 }
 .banner .welcome_msg a {
   width: 30%;
-  margin: 20px 0px;
-  padding: 12px 15px;
-  font-size: 1.2em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 18px 18px;
+  font-size: 1.4em;
   text-decoration: none;
 }
 .banner .welcome_msg a:hover {
   background: rgba(40, 40, 82, 0.4);
 }
 
-/* BANNER: Login Form; */
+.login_div_parent {
+height: 50%;
+}
 
 .banner .login_div {
+  min-width: 480px;
+  min-height: 260px;
+  height: 100%;
   width: 50%;
   float: right;
   background: rgba(100, 100, 100, 0.7);
@@ -337,9 +342,6 @@ form input:focus {
   bottom: 5px;
 }
 
-/* * * * * * * * *
-* SINGLE PAGE 
-* * * * * * * * */
 .content .post-wrapper {
   width: 70%;
   float: left;
@@ -402,7 +404,6 @@ form input:focus {
   transition: 0.1s;
 }
 
-/* NOTIFICATION MESSAGES */
 .message {
   width: 100%;
   margin: 0px auto;
@@ -428,4 +429,112 @@ form input:focus {
   padding: 10px;
   margin: auto;
   width: 80%;
+}
+
+ @media only screen and (max-width: 616px) { 
+  .banner .welcome_msg{
+    width: 100%;
+    min-width: 0;
+  }
+
+ 
+
+ .banner .login_div{
+   width: 100%;
+   min-width: 0;
+ }
+
+
+}
+ 
+
+@media only screen and (max-width: 600px) {
+  .content .post-parent {
+    grid-template-columns: 100%;
+  }
+  
+
+}
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+#navButton{
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 1150px) { 
+
+  .content .post-parent {
+    display: grid;
+    grid-template-columns: 47% 47%;
+    gap: 4%;
+  }
+
+  .nav{
+    visibility: hidden;
+  }
+
+  #navButton{
+    visibility: visible;
+  }
+  .content{
+    width: 90%;
+  }
+  
 }
